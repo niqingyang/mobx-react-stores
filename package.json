@@ -1,0 +1,46 @@
+{
+  "name": "mobx-react-stores",
+  "version": "0.2.26",
+  "description": "",
+  "main": "./lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "./node_modules/.bin/babel src --out-dir lib",
+    "test": "node ./lib/test/index.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/niqingyang/mobx-react-stores.git"
+  },
+  "keywords": [
+    "mobx",
+    "react",
+    "stores"
+  ],
+  "author": "niqingyang",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/polyfill": "^7.4.4",
+    "invariant": "^2.2.4",
+    "mobx": "^5.10.1",
+    "mobx-loading": ">=1.2.2",
+    "mobx-react": "^6.0.3",
+    "mobx-react-router": "^4.0.7",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-intl": "^2.9.0",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "react-test-renderer": "^16.8.6"
+  }
+}
