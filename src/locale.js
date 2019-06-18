@@ -9,7 +9,6 @@ class Locale {
     @observable
     lang
 
-    @observable
     translations
 
     constructor(defaultLang, translations) {

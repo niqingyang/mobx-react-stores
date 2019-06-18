@@ -1,4 +1,4 @@
-import {action, extendObservable, observable} from 'mobx';
+import {action} from 'mobx';
 import invariant from 'invariant';
 import {loadingStore} from 'mobx-loading';
 
@@ -6,7 +6,6 @@ const NAMESPACE_SEP = '/';
 
 class Stores {
 
-    @observable
     loading = loadingStore
 
     /**
@@ -32,10 +31,6 @@ class Stores {
                 } else {
                     return this.add(module);
                 }
-            }).finally(() => {
-                if (namespace) {
-                    this.loading.change(namespaceAlias, false, false);
-                }
             });
 
             return null;
@@ -53,9 +48,9 @@ class Stores {
 
             this.checkNamespace(namespace);
 
-            extendObservable(this, {
-                [namespace]: model
-            });
+            this[namespace] = model;
+
+            this.loading.change(namespace, false, false);
 
             return this[namespace];
         }
@@ -92,6 +87,7 @@ class Stores {
         // );
     }
 
+    @action
     dispatch = ({type, payload}) => {
 
         const types = type.split(NAMESPACE_SEP);
