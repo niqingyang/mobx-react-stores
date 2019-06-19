@@ -1,6 +1,6 @@
 {
   "name": "mobx-react-stores",
-  "version": "0.2.29",
+  "version": "0.2.32",
   "description": "",
   "main": "./lib/index.js",
   "files": [
@@ -10,6 +10,7 @@
     "build": "./node_modules/.bin/babel src --out-dir lib",
     "test": "node ./lib/test/index.test.js"
   },
+  "homepage": "https://acme.top/mobx-react-stores-doc",
   "repository": {
     "type": "git",
     "url": "https://github.com/niqingyang/mobx-react-stores.git"
@@ -26,7 +27,7 @@
     "@babel/polyfill": "^7.4.4",
     "invariant": "^2.2.4",
     "mobx": "^5.10.1",
-    "mobx-loading": ">=1.2.3",
+    "mobx-loading": "^1.2.5",
     "mobx-react": "^6.0.3",
     "mobx-react-router": "^4.0.7",
     "react": "^16.8.6",
