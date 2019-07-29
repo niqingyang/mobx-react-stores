@@ -12,8 +12,10 @@ import renderRoutes, {formatterRoutes} from './renderRoutes';
 
 class App {
 
+    // 状态
     stores
 
+    // 路由
     router
 
     // 默认 Loading 组件
@@ -110,6 +112,8 @@ class App {
             );
         }
 
+        // 将初始化时 stores 中的模型全部解构，初始化后新注入的模型需要从 stores 中重新获取
+        // 此处想优化，但没想到好的解决办法呢
         ReactDOM.render(
             <Provider {...this.stores} dispatch={this.stores.dispatch} stores={this.stores}>
                 <Router history={history}>

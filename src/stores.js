@@ -87,23 +87,45 @@ class Stores {
         // );
     }
 
-    @action
-    dispatch = ({type, payload}) => {
+    getAction = (type) => {
+
+        invariant(typeof type === 'string', `[stores.dispatch] invalid type '${type}', type must be a string`);
 
         const types = type.split(NAMESPACE_SEP);
 
-        invariant(types.length >= 2, `invalid type '${type}'`);
+        invariant(types.length >= 2, `[stores.dispatch] invalid type '${type}'`);
 
         const func = types.reduce((res, t) => {
 
-            invariant(res[t] !== undefined, `stores action '${type}' is undefined`);
+            invariant(res[t] !== undefined, `[stores.dispatch] action '${type}' is undefined`);
 
             return res[t];
         }, this);
 
-        invariant(typeof func === 'function', `stores action '${type}' must be a function`);
+        invariant(typeof func === 'function', `[stores.dispatch] action '${type}' must be a function`);
 
-        return func(payload);
+        return func;
+    }
+
+    @action
+    dispatch = (type, ...payload) => {
+
+        let mode = typeof type;
+
+        if (typeof type === 'object') {
+            payload = type.payload;
+            type = type.type;
+        } else if (typeof type !== 'string') {
+            invariant(false, `[stores.dispatch] invalid type '${type}'`);
+        }
+
+        const action = this.getAction(type);
+
+        if (mode === 'object') {
+            return action(payload);
+        } else {
+            return action(...payload);
+        }
     }
 }
 
