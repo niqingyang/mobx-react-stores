@@ -4,7 +4,7 @@ import namespace from './namespace';
 
 const LOCALE = "locale";
 
-@namespace
+@namespace("locale")
 class Locale {
     @observable
     lang
