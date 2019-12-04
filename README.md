@@ -77,16 +77,16 @@ import {namespace} from 'mobx-react-stores';
 import {namespace, loading} from 'mobx-react-stores';
 import {fetchRandomUser} from "@/services/demo";
 
-// 默认会为 class 添加 namespace 属性，值为将 class 类名转换为首字母小写的字符串
+// 默认会为 class 添加 namespace 属性，**必须指明，否则JS压缩后会导致丢失namespace**
 // 此处 namespace 值为 randomUser
-@namespace
+@namespace("randomUser")
 class RandomUser {
 
     user;
 
     message;
 
-	// 通过 loading 装饰器，向 loadingStore 中注入当前 action 的加载状态
+    // 通过 loading 装饰器，向 loadingStore 中注入当前 action 的加载状态
     @loading
     fetchUser = async () => {
 
@@ -281,7 +281,7 @@ const translations = {
 };
 
 // 注入
-stores.add(new Locale('zh-CN', translations));
+stores.add(new Locale('zh-CN', translations), "locale");
 
 // ... do someting
 ```
